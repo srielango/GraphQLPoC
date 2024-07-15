@@ -1,9 +1,14 @@
+using GraphQLPoC;
+using GraphQLPoC.Mutations;
 using GraphQLPoC.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddGraphQLServer()
-    .AddQueryType<Query>();
+    .AddQueryType<Query>()
+    .AddMutationType<Mutation>()
+    .AddInMemorySubscriptions()
+    .AddSubscriptionType<Subscription>();
 
 // Add services to the container.
 
@@ -26,6 +31,7 @@ var app = builder.Build();
 //app.UseAuthorization();
 
 //app.MapControllers();
+app.UseWebSockets();
 
 app.MapGraphQL();
 
