@@ -1,4 +1,4 @@
-﻿using GraphQLPoC.Models;
+﻿using GraphQLPoC.Entities;
 
 namespace GraphQLPoC.Queries
 {
@@ -8,10 +8,18 @@ namespace GraphQLPoC.Queries
             new Book
             {
                 Title = "C# in depth.",
-                Author = new Author
-                {
-                    Name = "Jon Skeet"
-                }
+                //Author = new Author
+                //{
+                //    Name = "Jon Skeet"
+                //}
             };
+
+        [UseProjection]
+        [UseFiltering]
+        [UseSorting]
+        public IQueryable<Entities.Book> GetBooks([Service] bookshelfContext context)
+        {
+            return context.Books;
+        }
     }
 }
