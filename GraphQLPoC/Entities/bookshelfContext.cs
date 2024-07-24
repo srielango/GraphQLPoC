@@ -21,8 +21,6 @@ public partial class bookshelfContext : DbContext
     {
         modelBuilder.Entity<Author>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__authors__3213E83FF8E5EDD0");
-
             entity.ToTable("authors");
 
             entity.Property(e => e.FirstName)
@@ -37,6 +35,10 @@ public partial class bookshelfContext : DbContext
         modelBuilder.Entity<Book>(entity =>
         {
             entity.Property(e => e.Title).HasMaxLength(50);
+
+            entity.HasOne(d => d.Author).WithMany(p => p.Books)
+                .HasForeignKey(d => d.AuthorId)
+                .HasConstraintName("FK_AuthorBooks");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -17,7 +17,7 @@ namespace GraphQLPoC.Queries
         [UseProjection]
         [UseFiltering]
         [UseSorting]
-        public IQueryable<Entities.Book> GetBooks([Service] bookshelfContext context)
+        public IQueryable<Book> GetBooks([Service] bookshelfContext context)
         {
             return context.Books;
         }

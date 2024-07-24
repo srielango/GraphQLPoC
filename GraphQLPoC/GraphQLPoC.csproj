@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="efpt.config.json.user" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="HotChocolate.AspNetCore" Version="13.9.6" />
     <PackageReference Include="HotChocolate.Data.EntityFramework" Version="13.9.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
